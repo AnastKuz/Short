@@ -14,6 +14,7 @@ class LinksController extends Controller
         return view('link', ['links'=>$links]);
     }
 
+    /*takes given url and shortens it*/
     public function shorten(Request $request) {
         $random_token = Str::random(6);
         DB::table('links')->insert([
@@ -23,6 +24,7 @@ class LinksController extends Controller
         return URL::to('/').'/'.$random_token;
     }
 
+    /*redirects from short link to original one*/
     public function fetchLink($link) {
         $short_link = URL::to('/').'/'. $link;
         $query = DB::table('links')->where('short_link', '=', $short_link);
@@ -32,14 +34,5 @@ class LinksController extends Controller
         } else {
             return redirect('/link');
         }
-    }
-
-    public function show($id)
-    {
-        $link = Link::find($id);
-        if (!$link){
-            return abort(404);
-        }
-        return view('link')->with('link', $link);
     }
 }

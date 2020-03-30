@@ -16,8 +16,6 @@
                         <input type="url" name="original_link"><br>
                         <input type="submit" value="Shorten" class="btn btn-primary mt-3">
                     </form>
-                    {{--<h4 class="mt-3">Your new link:</h4>
-                    <p>{{$link->short_link}}</p>--}}
                 </div>
             </div>
         </div>
